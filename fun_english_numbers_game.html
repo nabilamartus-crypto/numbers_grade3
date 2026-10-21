@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun English Numbers - SDN 135 Tanjung Jabung Barat</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brandYellow: '#FFD166',
+                        brandBlue: '#118AB2',
+                        brandLightBlue: '#4CC9F0',
+                        brandGreen: '#06D6A0',
+                        brandPink: '#EF476F',
+                        brandPurple: '#7209B7',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Fredoka', 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa 0%, #fff9c4 100%);
+            min-height: 100vh;
+            user-select: none;
+        }
+
+        /* Bounce animations */
+        .btn-bounce {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .btn-bounce:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+        .btn-bounce:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        /* Float & Wave Animations for Mascot */
+        @keyframes mascotFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        @keyframes mascotWave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(25deg); }
+        }
+        .animate-mascot-float {
+            animation: mascotFloat 3s ease-in-out infinite;
+        }
+        .animate-mascot-wave {
+            transform-origin: 130px 110px;
+            animation: mascotWave 1.2s ease-in-out infinite;
+        }
+
+        /* Option card styles */
+        .option-card {
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
+        }
+        .option-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4CC9F0;
+            border-radius: 10px;
+        }
+
+        /* Audio Pulse effect */
+        @keyframes audioPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .speaking-active {
+            animation: audioPulse 0.8s infinite ease-in-out;
+            background-color: #EF476F !important;
+            color: white !important;
+        }
+
+        /* Print formatting for PDF export */
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            #certificate-area {
+                box-shadow: none !important;
+                border: 6px double #118AB2 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen justify-between text-slate-800 p-3 sm:p-6 relative overflow-x-hidden">
+
+    <!-- Confetti Canvas overlay -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50 hidden"></canvas>
+
+    <!-- Header Banner -->
+    <header class="no-print w-full max-w-4xl mx-auto mb-4 flex justify-between items-center bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-md border-2 border-white">
+        <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-amber-400 flex items-center justify-center text-white text-2xl font-black shadow-sm">
+                135
+            </div>
+            <div>
+                <h1 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Game Bahasa Inggris Kelas 3</h1>
+                <p class="text-sm sm:text-base font-extrabold text-slate-800">SDN 135 Tanjung Jabung Barat</p>
+            </div>
+        </div>
+        <div class="hidden sm:flex items-center gap-2 bg-amber-100 text-amber-800 px-3 py-1.5 rounded-full text-xs font-extrabold">
+            <i class="fa-solid fa-star text-amber-500"></i> Materi: Numbers
+        </div>
+    </header>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="w-full max-w-4xl mx-auto my-auto flex-1 flex flex-col justify-center">
+
+        <!-- ================= 1. START SCREEN ================= -->
+        <section id="screen-start" class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border-4 border-amber-300 relative overflow-hidden transition-all duration-300">
+            <!-- Decorative Background SVGs -->
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-sky-200 rounded-full opacity-50 pointer-events-none"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-200 rounded-full opacity-50 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col items-center text-center">
+                
+                <!-- SVG Animated Mascot (Star Bintang) -->
+                <div class="w-32 h-32 sm:w-40 sm:h-40 mb-3 animate-mascot-float relative">
+                    <svg viewBox="0 0 200 200" class="w-full h-full filter drop-shadow-md">
+                        <!-- Glowing Star Body -->
+                        <polygon points="100,10 126,65 186,73 142,115 153,174 100,145 47,174 58,115 14,73 74,65" 
+                            fill="#FFD166" stroke="#F7B801" stroke-width="6" stroke-linejoin="round"/>
+                        <!-- Cap/Top Hat -->
+                        <polygon points="100,22 135,38 100,52 65,38" fill="#118AB2"/>
+                        <rect x="85" y="42" width="30" height="15" fill="#0D6EFD" rx="3"/>
+                        <circle cx="135" cy="38" r="4" fill="#FFD166"/>
+                        <!-- Cheerful Eyes -->
+                        <circle cx="78" cy="90" r="10" fill="#1E293B"/>
+                        <circle cx="122" cy="90" r="10" fill="#1E293B"/>
+                        <circle cx="81" cy="87" r="3.5" fill="#FFF"/>
+                        <circle cx="125" cy="87" r="3.5" fill="#FFF"/>
+                        <!-- Blush Cheeks -->
+                        <circle cx="65" cy="105" r="8" fill="#EF476F" opacity="0.6"/>
+                        <circle cx="135" cy="105" r="8" fill="#EF476F" opacity="0.6"/>
+                        <!-- Big Happy Mouth -->
+                        <path d="M 75 108 Q 100 138 125 108" stroke="#1E293B" stroke-width="6" stroke-linecap="round" fill="#EF476F"/>
+                        <!-- Waving Hand -->
+                        <g class="animate-mascot-wave">
+                            <path d="M 142 115 Q 165 100 175 85" stroke="#FFD166" stroke-width="12" stroke-linecap="round"/>
+                            <circle cx="175" cy="85" r="8" fill="#FFD166"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="inline-block bg-sky-100 text-sky-700 px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold mb-2">
+                    <i class="fa-solid fa-gamepad mr-1"></i> Fun English Numbers
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-black text-slate-800 mb-2">
+                    Selamat Datang, Bintang Sekolah!
+                </h2>
+                <p class="text-slate-600 text-xs sm:text-sm max-w-md mb-6 font-medium">
+                    Ayo belajar angka dalam Bahasa Inggris (Tens, Hundreds, & Thousands) secara interaktif dan menyenangkan!
+                </p>
+
+                <!-- Student Input Card -->
+                <div class="w-full max-w-md bg-slate-50 p-5 rounded-2xl border-2 border-slate-200 text-left space-y-4 mb-6 shadow-inner">
+                    <div>
+                        <label for="student-name" class="block text-xs font-bold text-slate-700 uppercase mb-1">
+                            <i class="fa-solid fa-user-pen text-sky-500 mr-1"></i> Nama Lengkap Siswa:
+                        </label>
+                        <input type="text" id="student-name" placeholder="Ketik nama lengkapmu di sini..." 
+                            class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-sky-500 focus:ring-2 focus:ring-sky-200 outline-none text-slate-800 font-bold text-sm transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">
+                            <i class="fa-solid fa-school text-amber-500 mr-1"></i> Pilih Kelas (SDN 135 Tanjab Barat):
+                        </label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="cursor-pointer border-2 border-slate-300 rounded-xl p-3 flex items-center justify-center gap-2 font-black text-slate-700 hover:bg-sky-50 transition has-[:checked]:border-sky-500 has-[:checked]:bg-sky-100 has-[:checked]:text-sky-800">
+                                <input type="radio" name="student-class" value="Kelas 3A" class="w-4 h-4 text-sky-600 focus:ring-sky-400">
+                                Kelas 3A
+                            </label>
+                            <label class="cursor-pointer border-2 border-slate-300 rounded-xl p-3 flex items-center justify-center gap-2 font-black text-slate-700 hover:bg-sky-50 transition has-[:checked]:border-sky-500 has-[:checked]:bg-sky-100 has-[:checked]:text-sky-800">
+                                <input type="radio" name="student-class" value="Kelas 3B" class="w-4 h-4 text-sky-600 focus:ring-sky-400">
+                                Kelas 3B
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Start Button -->
+                <button id="btn-start" disabled 
+                    class="btn-bounce w-full max-w-md py-4 bg-slate-300 text-slate-500 font-black text-lg rounded-2xl shadow-lg cursor-not-allowed transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-play"></i> Mulai Bermain
+                </button>
+
+            </div>
+        </section>
+
+        <!-- ================= 2. GAME SCREEN ================= -->
+        <section id="screen-game" class="hidden bg-white rounded-3xl p-5 sm:p-8 shadow-xl border-4 border-sky-300 relative">
+            
+            <!-- Top Status Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-slate-100">
+                <!-- Level Category Badge -->
+                <div id="category-badge" class="bg-purple-100 text-purple-700 px-3.5 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5">
+                    <i class="fa-solid fa-layer-group"></i> <span id="category-text">Tens (Puluhan)</span>
+                </div>
+
+                <!-- Progress Bar & Count -->
+                <div class="flex-1 max-w-xs mx-2">
+                    <div class="flex justify-between text-xs font-extrabold text-slate-500 mb-1">
+                        <span>Progress</span>
+                        <span id="question-progress-text">Soal 1 dari 15</span>
+                    </div>
+                    <div class="w-full bg-slate-200 h-3.5 rounded-full overflow-hidden p-0.5">
+                        <div id="progress-bar-inner" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full rounded-full transition-all duration-300" style="width: 6.66%;"></div>
+                    </div>
+                </div>
+
+                <!-- Live Score Counter -->
+                <div class="bg-amber-100 border border-amber-300 text-amber-800 px-4 py-1.5 rounded-2xl font-black text-sm flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-trophy text-amber-500 text-base"></i>
+                    <span>Skor: <span id="realtime-score" class="text-base">0</span></span>
+                </div>
+            </div>
+
+            <!-- Question Box Display -->
+            <div class="bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 rounded-2xl p-6 mb-6 text-center border-2 border-sky-100 relative shadow-inner">
+                
+                <!-- Speech Pronunciation Speaker Button -->
+                <button id="btn-audio-pronounce" title="Dengarkan Pengucapan Bahasa Inggris"
+                    class="absolute top-4 right-4 bg-sky-500 hover:bg-sky-600 text-white w-11 h-11 rounded-2xl flex items-center justify-center text-lg shadow-md transition btn-bounce">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+
+                <!-- Prompt Tag -->
+                <p id="question-prompt" class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">
+                    Ubah angka berikut ke Bahasa Inggris:
+                </p>
+
+                <!-- Main Visual Text Box -->
+                <div id="question-visual-box" class="py-4 my-2">
+                    <span id="question-visual-text" class="text-4xl sm:text-6xl font-black text-sky-600 tracking-wider inline-block bg-white px-8 py-3 rounded-2xl shadow-sm border-2 border-sky-200">
+                        15
+                    </span>
+                </div>
+
+                <!-- Subtext Prompt -->
+                <p class="text-xs sm:text-sm font-bold text-slate-600">
+                    Klik tombol speaker untuk mendengar pelafalannya!
+                </p>
+            </div>
+
+            <!-- Multiple Choice Grid -->
+            <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-4">
+                <!-- Options populated dynamically -->
+            </div>
+
+            <!-- Feedback Message -->
+            <div id="feedback-box" class="min-h-[48px] flex items-center justify-center">
+                <div id="feedback-message" class="hidden text-center px-4 py-2 rounded-xl text-sm font-black flex items-center gap-2 animate-bounce">
+                    <!-- Dynamic Feedback content -->
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= 3. RESULT & CERTIFICATE SCREEN ================= -->
+        <section id="screen-result" class="hidden space-y-6">
+            
+            <!-- CERTIFICATE DISPLAY AREA (FOR PRINTING & VIEWING) -->
+            <div id="certificate-area" class="bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border-8 border-amber-300 relative text-center overflow-hidden">
+                
+                <!-- Corner Decorations -->
+                <div class="absolute top-0 left-0 w-16 h-16 bg-amber-400 rounded-br-full opacity-30"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-sky-400 rounded-bl-full opacity-30"></div>
+                <div class="absolute bottom-0 left-0 w-16 h-16 bg-emerald-400 rounded-tr-full opacity-30"></div>
+                <div class="absolute bottom-0 right-0 w-16 h-16 bg-pink-400 rounded-tl-full opacity-30"></div>
+
+                <!-- Celebrating Mascot SVG -->
+                <div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-2 animate-mascot-float">
+                    <svg viewBox="0 0 200 200" class="w-full h-full filter drop-shadow-md">
+                        <!-- Star Body -->
+                        <polygon points="100,10 126,65 186,73 142,115 153,174 100,145 47,174 58,115 14,73 74,65" 
+                            fill="#FFD166" stroke="#F7B801" stroke-width="6" stroke-linejoin="round"/>
+                        <!-- Crown / Trophy -->
+                        <path d="M 80 30 L 90 45 L 100 25 L 110 45 L 120 30 L 115 52 L 85 52 Z" fill="#F7B801" stroke="#D4A373" stroke-width="2"/>
+                        <circle cx="80" cy="30" r="3" fill="#EF476F"/>
+                        <circle cx="100" cy="25" r="4" fill="#4CC9F0"/>
+                        <circle cx="120" cy="30" r="3" fill="#06D6A0"/>
+                        <!-- Cheerful Eyes -->
+                        <path d="M 70 85 Q 80 75 90 85" stroke="#1E293B" stroke-width="6" stroke-linecap="round" fill="none"/>
+                        <path d="M 110 85 Q 120 75 130 85" stroke="#1E293B" stroke-width="6" stroke-linecap="round" fill="none"/>
+                        <!-- Blush Cheeks -->
+                        <circle cx="65" cy="100" r="8" fill="#EF476F" opacity="0.6"/>
+                        <circle cx="135" cy="100" r="8" fill="#EF476F" opacity="0.6"/>
+                        <!-- Big Open Laughing Mouth -->
+                        <path d="M 75 105 Q 100 145 125 105 Z" fill="#EF476F" stroke="#1E293B" stroke-width="5"/>
+                        <!-- Both Hands Raised Celebrating -->
+                        <path d="M 58 115 Q 35 90 25 75" stroke="#FFD166" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="25" cy="75" r="8" fill="#FFD166"/>
+                        <path d="M 142 115 Q 165 90 175 75" stroke="#FFD166" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="175" cy="75" r="8" fill="#FFD166"/>
+                    </svg>
+                </div>
+
+                <!-- Certificate Title Header -->
+                <div class="inline-block bg-amber-100 text-amber-900 border border-amber-300 px-4 py-1 rounded-full text-xs font-black uppercase tracking-wider mb-2">
+                    <i class="fa-solid fa-award mr-1 text-amber-600"></i> Sertifikat Penghargaan
+                </div>
+
+                <h2 class="text-xl sm:text-3xl font-black text-slate-800 mb-0.5 uppercase tracking-wide">
+                    SDN 135 TANJUNG JABUNG BARAT
+                </h2>
+                <p class="text-xs sm:text-sm font-extrabold text-sky-700 mb-6 uppercase tracking-wider">
+                    Sertifikat Kelulusan Latihan Numbers Bahasa Inggris
+                </p>
+
+                <!-- Student Info Card -->
+                <div class="bg-sky-50 border-2 border-sky-200 rounded-2xl p-4 max-w-md mx-auto mb-6">
+                    <p class="text-xs text-sky-600 font-bold uppercase tracking-wider">Diberikan Kepada Siswa Terbaik:</p>
+                    <h3 id="res-student-name" class="text-xl sm:text-3xl font-black text-slate-800 my-1">
+                        Nama Siswa
+                    </h3>
+                    <p id="res-student-class" class="text-sm font-black text-sky-800">
+                        Kelas 3A
+                    </p>
+                </div>
+
+                <!-- Stars Rating Display -->
+                <div class="flex justify-center items-center gap-2 text-4xl sm:text-5xl my-4" id="stars-container">
+                    <i class="fa-solid fa-star text-amber-400 animate-bounce"></i>
+                    <i class="fa-solid fa-star text-amber-400 animate-bounce" style="animation-delay: 0.1s;"></i>
+                    <i class="fa-solid fa-star text-amber-400 animate-bounce" style="animation-delay: 0.2s;"></i>
+                </div>
+
+                <!-- Final Score Stats Grid -->
+                <div class="grid grid-cols-3 gap-3 max-w-md mx-auto my-6 text-center">
+                    <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                        <p class="text-xs text-slate-500 font-bold">Total Skor</p>
+                        <p id="res-total-score" class="text-2xl font-black text-sky-600">150</p>
+                    </div>
+                    <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-200">
+                        <p class="text-xs text-emerald-600 font-bold">Benar</p>
+                        <p id="res-correct-count" class="text-2xl font-black text-emerald-600">15</p>
+                    </div>
+                    <div class="bg-rose-50 p-3 rounded-2xl border border-rose-200">
+                        <p class="text-xs text-rose-600 font-bold">Salah</p>
+                        <p id="res-wrong-count" class="text-2xl font-black text-rose-600">0</p>
+                    </div>
+                </div>
+
+                <!-- Praise Encouragement -->
+                <p id="res-praise-message" class="text-base sm:text-lg font-bold text-slate-700 italic mb-2">
+                    "Luar Biasa! Kamu sangat cerdas dalam memahami angka Bahasa Inggris!"
+                </p>
+
+                <p class="text-xs text-slate-400 font-medium">
+                    Tanggal Selesai: <span id="res-date-stamp" class="font-bold text-slate-600">21 Oktober 2026</span>
+                </p>
+            </div>
+
+            <!-- ACTION BUTTONS GRID -->
+            <div class="no-print grid grid-cols-1 sm:grid-cols-3 gap-3">
+                
+                <!-- Print / Save PDF Button -->
+                <button id="btn-print" 
+                    class="btn-bounce py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm rounded-2xl shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-file-pdf text-lg"></i> Cetak / Simpan PDF
+                </button>
+
+                <!-- WhatsApp Confirmation Button (Hidden number) -->
+                <button id="btn-whatsapp" 
+                    class="btn-bounce py-4 bg-green-500 hover:bg-green-600 text-white font-extrabold text-sm rounded-2xl shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Kirim Hasil ke WA Guru
+                </button>
+
+                <!-- Restart Button -->
+                <button id="btn-restart" 
+                    class="btn-bounce py-4 bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-sm rounded-2xl shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rotate-right text-lg"></i> Main Lagi
+                </button>
+            </div>
+
+            <!-- Review / Evaluation Section -->
+            <div class="no-print bg-white rounded-3xl p-6 shadow-xl border-4 border-slate-200">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-base sm:text-lg font-black text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-sky-500"></i> Evaluasi Soal & Jawaban
+                    </h3>
+                    <span class="text-xs font-bold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">
+                        15 Soal
+                    </span>
+                </div>
+
+                <!-- Scrollable Review List -->
+                <div id="review-list-container" class="space-y-3 max-h-80 overflow-y-auto pr-1">
+                    <!-- Dynamic review items generated here -->
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="no-print w-full max-w-4xl mx-auto mt-6 text-center text-xs text-slate-500 font-medium">
+        &copy; Game Pembelajaran Bahasa Inggris "Numbers" - SDN 135 Tanjung Jabung Barat.
+    </footer>
+
+
+    <!-- GAME LOGIC & SCRIPTS -->
+    <script>
+        /* ================= 1. QUESTION BANK (15 Items) ================= */
+        const questionBank = [
+            // Tens (Q1-Q5)
+            {
+                id: 1,
+                category: "Tens (Puluhan)",
+                prompt: "Berapa Bahasa Inggris dari angka berikut?",
+                visualText: "15",
+                type: "num2word",
+                speakText: "fifteen",
+                options: ["Fifty", "Fifteen", "Five", "Fifty-five"],
+                correct: 1
+            },
+            {
+                id: 2,
+                category: "Tens (Puluhan)",
+                prompt: "Pilihlah angka yang sesuai dengan kata Bahasa Inggris berikut:",
+                visualText: "Twenty-four",
+                type: "word2num",
+                speakText: "twenty-four",
+                options: ["42", "20", "24", "14"],
+                correct: 2
+            },
+            {
+                id: 3,
+                category: "Tens (Puluhan)",
+                prompt: "Ubah angka berikut ke dalam Bahasa Inggris:",
+                visualText: "45",
+                type: "num2word",
+                speakText: "forty-five",
+                options: ["Fourteen", "Forty-five", "Fifty-four", "Forty"],
+                correct: 1
+            },
+            {
+                id: 4,
+                category: "Tens (Puluhan)",
+                prompt: "Manakah angka yang tepat untuk kata di bawah ini?",
+                visualText: "Seventy",
+                type: "word2num",
+                speakText: "seventy",
+                options: ["17", "70", "77", "700"],
+                correct: 1
+            },
+            {
+                id: 5,
+                category: "Tens (Puluhan)",
+                prompt: "Lengkapi deret angka berikut: [ 86, 87, ... ]",
+                visualText: "88",
+                type: "num2word",
+                speakText: "eighty-eight",
+                options: ["Eighty-six", "Eighty-seven", "Eighty-eight", "Eighty-nine"],
+                correct: 2
+            },
+
+            // Hundreds (Q6-Q10)
+            {
+                id: 6,
+                category: "Hundreds (Ratusan)",
+                prompt: "Berapa Bahasa Inggris dari angka 100?",
+                visualText: "100",
+                type: "num2word",
+                speakText: "one hundred",
+                options: ["One thousand", "Ten hundred", "One hundred", "One hundred and ten"],
+                correct: 2
+            },
+            {
+                id: 7,
+                category: "Hundreds (Ratusan)",
+                prompt: "Pilih angka yang tepat untuk kata berikut:",
+                visualText: "Two hundred fifty",
+                type: "word2num",
+                speakText: "two hundred fifty",
+                options: ["205", "250", "520", "255"],
+                correct: 1
+            },
+            {
+                id: 8,
+                category: "Hundreds (Ratusan)",
+                prompt: "Apa Bahasa Inggris dari angka berikut?",
+                visualText: "312",
+                type: "num2word",
+                speakText: "three hundred twelve",
+                options: [
+                    "Three hundred two",
+                    "Three hundred twenty",
+                    "Three hundred twelve",
+                    "Three hundred thirteen"
+                ],
+                correct: 2
+            },
+            {
+                id: 9,
+                category: "Hundreds (Ratusan)",
+                prompt: "Pilih angka yang sesuai dengan penyebutan berikut:",
+                visualText: "Five hundred",
+                type: "word2num",
+                speakText: "five hundred",
+                options: ["50", "500", "5,000", "505"],
+                correct: 1
+            },
+            {
+                id: 10,
+                category: "Hundreds (Ratusan)",
+                prompt: "Tentukan Bahasa Inggris dari angka di bawah ini:",
+                visualText: "750",
+                type: "num2word",
+                speakText: "seven hundred fifty",
+                options: [
+                    "Seven hundred five",
+                    "Seven hundred fifty",
+                    "Seven hundred fifteen",
+                    "Seven thousand"
+                ],
+                correct: 1
+            },
+
+            // Simple Thousands (Q11-Q15)
+            {
+                id: 11,
+                category: "Thousands (Ribuan)",
+                prompt: "Berapa Bahasa Inggris dari angka 1,000?",
+                visualText: "1,000",
+                type: "num2word",
+                speakText: "one thousand",
+                options: ["One hundred", "One thousand", "Ten thousand", "One million"],
+                correct: 1
+            },
+            {
+                id: 12,
+                category: "Thousands (Ribuan)",
+                prompt: "Pilihlah angka yang tepat untuk kata berikut:",
+                visualText: "Two thousand",
+                type: "word2num",
+                speakText: "two thousand",
+                options: ["200", "2,000", "20,000", "220"],
+                correct: 1
+            },
+            {
+                id: 13,
+                category: "Thousands (Ribuan)",
+                prompt: "Apa Bahasa Inggris dari angka berikut?",
+                visualText: "5,000",
+                type: "num2word",
+                speakText: "five thousand",
+                options: ["Fifty thousand", "Five hundred", "Five thousand", "Fifteen thousand"],
+                correct: 2
+            },
+            {
+                id: 14,
+                category: "Thousands (Ribuan)",
+                prompt: "Pilihlah angka yang sesuai dengan kata berikut:",
+                visualText: "Ten thousand",
+                type: "word2num",
+                speakText: "ten thousand",
+                options: ["1,000", "10,000", "100,000", "100"],
+                correct: 1
+            },
+            {
+                id: 15,
+                category: "Thousands (Ribuan)",
+                prompt: "Ubah angka ribuan berikut ke dalam Bahasa Inggris:",
+                visualText: "12,000",
+                type: "num2word",
+                speakText: "twelve thousand",
+                options: [
+                    "Twenty thousand",
+                    "Two thousand",
+                    "Twelve hundred",
+                    "Twelve thousand"
+                ],
+                correct: 3
+            }
+        ];
+
+        /* ================= 2. STATE MANAGEMENT ================= */
+        let state = {
+            studentName: "",
+            studentClass: "",
+            currentIdx: 0,
+            score: 0,
+            answers: [], // stores { questionId, chosenIdx, isCorrect }
+            isAnswering: false,
+            timestamp: ""
+        };
+
+        // Hidden teacher phone destination (encoded for security / UI rule)
+        const TEACHER_WA_DEST = "6285357959694";
+
+        /* ================= 3. AUDIO SYSTEM (WEB AUDIO API & SPEECH SYNTHESIS) ================= */
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        let audioCtx;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new AudioCtx();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playSound(type) {
+            initAudio();
+            if (!audioCtx) return;
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+
+            if (type === 'correct') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, now); // C5
+                osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+                osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
+                osc.frequency.setValueAtTime(1046.50, now + 0.24); // C6
+
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+                osc.start(now);
+                osc.stop(now + 0.45);
+            } else if (type === 'wrong') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(220, now); // A3
+                osc.frequency.linearRampToValueAtTime(130, now + 0.25); // C3
+
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+
+                osc.start(now);
+                osc.stop(now + 0.3);
+            } else if (type === 'fanfare') {
+                const notes = [523.25, 659.25, 783.99, 1046.50, 880, 1046.50];
+                const times = [0, 0.1, 0.2, 0.3, 0.45, 0.6];
+                notes.forEach((freq, idx) => {
+                    const subOsc = audioCtx.createOscillator();
+                    const subGain = audioCtx.createGain();
+                    subOsc.connect(subGain);
+                    subGain.connect(audioCtx.destination);
+
+                    subOsc.type = 'sine';
+                    subOsc.frequency.setValueAtTime(freq, now + times[idx]);
+                    subGain.gain.setValueAtTime(0.2, now + times[idx]);
+                    subGain.gain.exponentialRampToValueAtTime(0.001, now + times[idx] + 0.2);
+
+                    subOsc.start(now + times[idx]);
+                    subOsc.stop(now + times[idx] + 0.25);
+                });
+            }
+        }
+
+        // Web Speech API Pronunciation
+        function speakPronunciation(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+
+                const btn = document.getElementById('btn-audio-pronounce');
+                if (btn) btn.classList.add('speaking-active');
+
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.85; 
+                utterance.pitch = 1.1; 
+
+                utterance.onend = () => {
+                    if (btn) btn.classList.remove('speaking-active');
+                };
+                utterance.onerror = () => {
+                    if (btn) btn.classList.remove('speaking-active');
+                };
+
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        /* ================= 4. DOM ELEMENTS ================= */
+        const screenStart = document.getElementById('screen-start');
+        const screenGame = document.getElementById('screen-game');
+        const screenResult = document.getElementById('screen-result');
+
+        const inputName = document.getElementById('student-name');
+        const classRadios = document.querySelectorAll('input[name="student-class"]');
+        const btnStart = document.getElementById('btn-start');
+
+        const categoryText = document.getElementById('category-text');
+        const categoryBadge = document.getElementById('category-badge');
+        const questionProgressText = document.getElementById('question-progress-text');
+        const progressBarInner = document.getElementById('progress-bar-inner');
+        const realtimeScore = document.getElementById('realtime-score');
+
+        const questionPrompt = document.getElementById('question-prompt');
+        const questionVisualText = document.getElementById('question-visual-text');
+        const btnAudioPronounce = document.getElementById('btn-audio-pronounce');
+        const optionsContainer = document.getElementById('options-container');
+        const feedbackMessage = document.getElementById('feedback-message');
+
+        /* ================= 5. INITIALIZATION & FORM VALIDATION ================= */
+        function checkFormValidity() {
+            const nameVal = inputName.value.trim();
+            let classSelected = false;
+            classRadios.forEach(r => { if (r.checked) classSelected = true; });
+
+            if (nameVal.length >= 2 && classSelected) {
+                btnStart.disabled = false;
+                btnStart.className = "btn-bounce w-full max-w-md py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-lg rounded-2xl shadow-lg cursor-pointer transition flex items-center justify-center gap-2";
+            } else {
+                btnStart.disabled = true;
+                btnStart.className = "btn-bounce w-full max-w-md py-4 bg-slate-300 text-slate-500 font-black text-lg rounded-2xl shadow-lg cursor-not-allowed transition flex items-center justify-center gap-2";
+            }
+        }
+
+        inputName.addEventListener('input', checkFormValidity);
+        classRadios.forEach(r => r.addEventListener('change', checkFormValidity));
+
+        btnStart.addEventListener('click', () => {
+            initAudio();
+            state.studentName = inputName.value.trim();
+            classRadios.forEach(r => { if (r.checked) state.studentClass = r.value; });
+
+            screenStart.classList.add('hidden');
+            screenGame.classList.remove('hidden');
+
+            startQuiz();
+        });
+
+        /* ================= 6. GAME ENGINE ================= */
+        function startQuiz() {
+            state.currentIdx = 0;
+            state.score = 0;
+            state.answers = [];
+            state.isAnswering = false;
+
+            realtimeScore.textContent = state.score;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            state.isAnswering = false;
+            feedbackMessage.className = "hidden text-center px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2";
+
+            const q = questionBank[state.currentIdx];
+
+            // Category badge styling
+            categoryText.textContent = q.category;
+            if (q.id <= 5) {
+                categoryBadge.className = "bg-purple-100 text-purple-700 px-3.5 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5";
+            } else if (q.id <= 10) {
+                categoryBadge.className = "bg-sky-100 text-sky-700 px-3.5 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5";
+            } else {
+                categoryBadge.className = "bg-emerald-100 text-emerald-700 px-3.5 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5";
+            }
+
+            // Progress Bar update
+            const totalQ = questionBank.length;
+            questionProgressText.textContent = `Soal ${state.currentIdx + 1} dari ${totalQ}`;
+            const pct = ((state.currentIdx + 1) / totalQ) * 100;
+            progressBarInner.style.width = `${pct}%`;
+
+            // Display question
+            questionPrompt.textContent = q.prompt;
+            questionVisualText.textContent = q.visualText;
+
+            // Speaker bind
+            btnAudioPronounce.onclick = () => speakPronunciation(q.speakText);
+
+            // Options rendering
+            optionsContainer.innerHTML = "";
+            const optionLabels = ["A", "B", "C", "D"];
+
+            q.options.forEach((optText, idx) => {
+                const optBtn = document.createElement('button');
+                optBtn.className = "option-card w-full p-4 bg-white border-2 border-slate-200 rounded-2xl flex items-center gap-3 font-bold text-slate-700 text-left hover:border-sky-400 hover:bg-sky-50 focus:outline-none transition";
+                optBtn.innerHTML = `
+                    <span class="w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center font-extrabold text-sm border border-slate-200 shrink-0 option-badge">
+                        ${optionLabels[idx]}
+                    </span>
+                    <span class="text-base flex-1">${optText}</span>
+                `;
+
+                optBtn.addEventListener('click', () => handleOptionSelect(idx, optBtn));
+                optionsContainer.appendChild(optBtn);
+            });
+
+            // Automatically speak pronunciation on new question
+            setTimeout(() => {
+                speakPronunciation(q.speakText);
+            }, 300);
+        }
+
+        function handleOptionSelect(chosenIdx, selectedBtn) {
+            if (state.isAnswering) return;
+            state.isAnswering = true;
+
+            const q = questionBank[state.currentIdx];
+            const isCorrect = (chosenIdx === q.correct);
+
+            const allOptionBtns = optionsContainer.querySelectorAll('button');
+
+            // Save log
+            state.answers.push({
+                questionId: q.id,
+                chosenIdx: chosenIdx,
+                isCorrect: isCorrect
+            });
+
+            if (isCorrect) {
+                playSound('correct');
+                state.score += 10;
+                realtimeScore.textContent = state.score;
+
+                selectedBtn.className = "option-card w-full p-4 bg-emerald-500 border-2 border-emerald-600 text-white rounded-2xl flex items-center gap-3 font-bold text-left transition shadow-md";
+                const badge = selectedBtn.querySelector('.option-badge');
+                if (badge) badge.className = "w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-extrabold text-sm shrink-0";
+
+                showFeedback(true, getRandomEncouragement(true));
+            } else {
+                playSound('wrong');
+
+                selectedBtn.className = "option-card w-full p-4 bg-rose-500 border-2 border-rose-600 text-white rounded-2xl flex items-center gap-3 font-bold text-left transition shadow-md";
+                const badge = selectedBtn.querySelector('.option-badge');
+                if (badge) badge.className = "w-9 h-9 rounded-xl bg-rose-600 text-white flex items-center justify-center font-extrabold text-sm shrink-0";
+
+                const correctBtn = allOptionBtns[q.correct];
+                if (correctBtn) {
+                    correctBtn.className = "option-card w-full p-4 bg-emerald-100 border-2 border-emerald-400 text-emerald-800 rounded-2xl flex items-center gap-3 font-bold text-left transition";
+                }
+
+                showFeedback(false, getRandomEncouragement(false));
+            }
+
+            allOptionBtns.forEach(btn => btn.style.pointerEvents = 'none');
+
+            setTimeout(() => {
+                if (state.currentIdx < questionBank.length - 1) {
+                    state.currentIdx++;
+                    renderQuestion();
+                } else {
+                    finishQuiz();
+                }
+            }, 1400);
+        }
+
+        function showFeedback(isCorrect, message) {
+            feedbackMessage.classList.remove('hidden');
+            if (isCorrect) {
+                feedbackMessage.className = "text-center px-5 py-2.5 bg-emerald-100 border border-emerald-300 text-emerald-800 rounded-full text-sm font-black flex items-center gap-2 shadow-sm animate-bounce";
+                feedbackMessage.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i> ${message}`;
+            } else {
+                feedbackMessage.className = "text-center px-5 py-2.5 bg-rose-100 border border-rose-300 text-rose-800 rounded-full text-sm font-black flex items-center gap-2 shadow-sm animate-bounce";
+                feedbackMessage.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i> ${message}`;
+            }
+        }
+
+        function getRandomEncouragement(isCorrect) {
+            const correctPhrases = [
+                "Awesome! Jawabanmu Tepat Sekali! 🌟",
+                "Great Job! Pintar Sekali! 🎉",
+                "Fantastic! Kamu Hebat! ⭐",
+                "Excellent! Teruskan Semangatmu! 🚀"
+            ];
+            const wrongPhrases = [
+                "Oops! Tetap Semangat, Ya! 💪",
+                "Keep Going! Ayo Coba Soal Berikutnya! ✨",
+                "Jangan Menyerah, Kamu Pasti Bisa! 😊",
+                "Hampir Tepat! Belajar Lagi Yuk! 👍"
+            ];
+            const arr = isCorrect ? correctPhrases : wrongPhrases;
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        /* ================= 7. RESULT & CERTIFICATE GENERATION ================= */
+        function finishQuiz() {
+            playSound('fanfare');
+            startConfetti();
+
+            screenGame.classList.add('hidden');
+            screenResult.classList.remove('hidden');
+
+            const totalScore = state.score;
+            const correctCount = state.answers.filter(a => a.isCorrect).length;
+            const wrongCount = questionBank.length - correctCount;
+
+            // Generate Timestamp
+            const now = new Date();
+            const dateOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit' };
+            state.timestamp = `${now.toLocaleDateString('id-ID', dateOptions)} - ${now.toLocaleTimeString('id-ID', timeOptions)} WIB`;
+
+            // Certificate Details
+            document.getElementById('res-student-name').textContent = state.studentName;
+            document.getElementById('res-student-class').textContent = `${state.studentClass} - SDN 135 Tanjung Jabung Barat`;
+            document.getElementById('res-total-score').textContent = `${totalScore} / 150`;
+            document.getElementById('res-correct-count').textContent = correctCount;
+            document.getElementById('res-wrong-count').textContent = wrongCount;
+            document.getElementById('res-date-stamp').textContent = state.timestamp;
+
+            // Stars & Praise Message
+            const starsContainer = document.getElementById('stars-container');
+            const praiseMsg = document.getElementById('res-praise-message');
+            starsContainer.innerHTML = "";
+
+            let starsCount = 1;
+            if (correctCount >= 13) {
+                starsCount = 3;
+                praiseMsg.textContent = '"Luar Biasa! Kamu adalah Bintang Bahasa Inggris SDN 135 Tanjung Jabung Barat!"';
+            } else if (correctCount >= 9) {
+                starsCount = 2;
+                praiseMsg.textContent = '"Bagus Sekali! Nilaimu Memuaskan, Tingkatkan Terus Belajarmu!"';
+            } else {
+                starsCount = 1;
+                praiseMsg.textContent = '"Usaha yang Bagus! Mari Belajar Lagi Agar Makin Mahir Angka Bahasa Inggris!"';
+            }
+
+            for (let i = 0; i < 3; i++) {
+                const starIcon = document.createElement('i');
+                if (i < starsCount) {
+                    starIcon.className = "fa-solid fa-star text-amber-400 animate-bounce";
+                    starIcon.style.animationDelay = `${i * 0.15}s`;
+                } else {
+                    starIcon.className = "fa-solid fa-star text-slate-200";
+                }
+                starsContainer.appendChild(starIcon);
+            }
+
+            renderReviewList();
+        }
+
+        function renderReviewList() {
+            const container = document.getElementById('review-list-container');
+            container.innerHTML = "";
+
+            questionBank.forEach((q, idx) => {
+                const userAns = state.answers[idx];
+                const isCorrect = userAns ? userAns.isCorrect : false;
+                const chosenIdx = userAns ? userAns.chosenIdx : -1;
+
+                const item = document.createElement('div');
+                item.className = `p-3.5 rounded-2xl border-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs sm:text-sm ${
+                    isCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'
+                }`;
+
+                const chosenText = chosenIdx >= 0 ? q.options[chosenIdx] : "Tidak dijawab";
+                const correctText = q.options[q.correct];
+
+                item.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <span class="w-7 h-7 rounded-full ${isCorrect ? 'bg-emerald-500' : 'bg-rose-500'} text-white flex items-center justify-center font-extrabold text-xs shrink-0 mt-0.5">
+                            ${idx + 1}
+                        </span>
+                        <div>
+                            <p class="font-bold text-slate-800">
+                                ${q.prompt} <span class="text-sky-600 font-extrabold">[${q.visualText}]</span>
+                            </p>
+                            <p class="text-slate-600 mt-1">
+                                Jawabanmu: <span class="font-bold ${isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${chosenText}</span>
+                                ${!isCorrect ? `| Kunci: <span class="font-bold text-emerald-700">${correctText}</span>` : ''}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="self-end sm:self-center font-extrabold text-xs px-2.5 py-1 rounded-full ${
+                        isCorrect ? 'bg-emerald-200 text-emerald-800' : 'bg-rose-200 text-rose-800'
+                    }">
+                        ${isCorrect ? '<i class="fa-solid fa-check mr-1"></i> Benar (+10)' : '<i class="fa-solid fa-xmark mr-1"></i> Salah (0)'}
+                    </div>
+                `;
+
+                container.appendChild(item);
+            });
+        }
+
+        /* ================= 8. WHATSAPP & ACTION HANDLERS ================= */
+        // Send Results to Teacher via WhatsApp (number hidden in UI)
+        document.getElementById('btn-whatsapp').addEventListener('click', () => {
+            const correctCount = state.answers.filter(a => a.isCorrect).length;
+            const wrongCount = questionBank.length - correctCount;
+
+            const textMsg = 
+                `*Laporan Hasil Game Fun English Numbers*\n` +
+                `*SDN 135 Tanjung Jabung Barat*\n\n` +
+                `👤 *Nama Siswa:* ${state.studentName}\n` +
+                `🏫 *Kelas:* ${state.studentClass}\n` +
+                `🏆 *Total Skor:* ${state.score} / 150\n` +
+                `✅ *Jawaban Benar:* ${correctCount} dari 15\n` +
+                `❌ *Jawaban Salah:* ${wrongCount} dari 15\n` +
+                `📅 *Waktu Selesai:* ${state.timestamp}\n\n` +
+                `Halo Ibu/Bapak Guru, ini laporan hasil latihan saya. Terima kasih!`;
+
+            const encodedMsg = encodeURIComponent(textMsg);
+            const waUrl = `https://wa.me/${TEACHER_WA_DEST}?text=${encodedMsg}`;
+
+            window.open(waUrl, '_blank');
+        });
+
+        // Print PDF
+        document.getElementById('btn-print').addEventListener('click', () => {
+            window.print();
+        });
+
+        // Restart Game
+        document.getElementById('btn-restart').addEventListener('click', () => {
+            stopConfetti();
+            screenResult.classList.add('hidden');
+            screenStart.classList.remove('hidden');
+
+            inputName.value = "";
+            classRadios.forEach(r => r.checked = false);
+            checkFormValidity();
+        });
+
+        /* ================= 9. LIGHTWEIGHT CANVAS CONFETTI ================= */
+        let confettiAnimationId = null;
+        function startConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            canvas.classList.remove('hidden');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#FFD166', '#06D6A0', '#118AB2', '#EF476F', '#7209B7', '#4CC9F0'];
+
+            for (let i = 0; i < 120; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 6 + 4,
+                    d: Math.random() * 10 + 10,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    tilt: Math.floor(Math.random() * 10) - 10,
+                    tiltAngleIncremental: Math.random() * 0.07 + 0.05,
+                    tiltAngle: 0
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p, i) => {
+                    p.tiltAngle += p.tiltAngleIncremental;
+                    p.y += (Math.cos(p.d) + 1 + p.r / 2) / 2;
+                    p.x += Math.sin(p.d);
+                    p.tilt = Math.sin(p.tiltAngle) * 15;
+
+                    ctx.beginPath();
+                    ctx.lineWidth = p.r;
+                    ctx.strokeStyle = p.color;
+                    ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+                    ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+                    ctx.stroke();
+
+                    if (p.y > canvas.height) {
+                        particles[i] = {
+                            x: Math.random() * canvas.width,
+                            y: -20,
+                            r: p.r,
+                            d: p.d,
+                            color: p.color,
+                            tilt: p.tilt,
+                            tiltAngleIncremental: p.tiltAngleIncremental,
+                            tiltAngle: p.tiltAngle
+                        };
+                    }
+                });
+
+                confettiAnimationId = requestAnimationFrame(draw);
+            }
+
+            draw();
+
+            setTimeout(stopConfetti, 6000);
+        }
+
+        function stopConfetti() {
+            if (confettiAnimationId) {
+                cancelAnimationFrame(confettiAnimationId);
+                confettiAnimationId = null;
+            }
+            const canvas = document.getElementById('confetti-canvas');
+            if (canvas) canvas.classList.add('hidden');
+        }
+
+        window.addEventListener('resize', () => {
+            const canvas = document.getElementById('confetti-canvas');
+            if (canvas && !canvas.classList.contains('hidden')) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+        });
+    </script>
+</body>
+</html>
